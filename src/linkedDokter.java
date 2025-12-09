@@ -25,7 +25,6 @@ public class linkedDokter {
   }
 
   public nodeDokter cariPoli(nodePasien pasien) {
-    // Logika alokasi (sudah terbukti benar untuk memfilter)
     if (pasien.darurat) {
       nodeDokter current = Head;
       while (current != null) {
@@ -97,7 +96,7 @@ public class linkedDokter {
 
         while (tempDokter != null) {
           if (tempDokter.id == dokter.id) {
-            tempDokter.linkedPasien.addPasien(pasien); // addPasien kloning di linkedPasien
+            tempDokter.linkedPasien.addPasien(pasien);
             dokterDitemukanDiRuangan = true;
             break;
           }
@@ -106,7 +105,7 @@ public class linkedDokter {
 
         if (!dokterDitemukanDiRuangan) {
           nodeDokter uniqueDokter = new nodeDokter(dokter.id, dokter.name, dokter.poli);
-          uniqueDokter.linkedPasien.addPasien(pasien); // addPasien kloning di linkedPasien
+          uniqueDokter.linkedPasien.addPasien(pasien);
           ruangTujuan.daftarDokter.addDokter(uniqueDokter);
         }
       }

@@ -2,7 +2,6 @@ public class linkedPasien {
   nodePasien Head;
 
   public void addPasien(nodePasien pasien) {
-    // *** PERBAIKAN: MEMBUAT NODE BARU YANG BENAR-BENAR TERPISAH ***
     nodePasien newNode = new nodePasien(
         pasien.id,
         pasien.name,
@@ -11,7 +10,6 @@ public class linkedPasien {
         pasien.diastolic,
         pasien.penyakit,
         pasien.darurat);
-    // newNode.next sudah dipastikan null di konstruktor nodePasien
 
     if (Head == null) {
       Head = newNode;
@@ -23,7 +21,6 @@ public class linkedPasien {
     }
   }
 
-  // ... (metode display tetap sama) ...
   public void display() {
     nodePasien current = Head;
     int nomorUrut = 1;
