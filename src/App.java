@@ -1,10 +1,12 @@
 public class App {
     public static void main(String[] args) {
+        // 1. Inisialisasi Struktur Data Utama
         linkedDokter rumahSakitDokter = new linkedDokter();
         QueuePasien antrianGlobal = new QueuePasien();
         treeRuangan rumahSakit = new treeRuangan();
         StackTindakan riwayatTindakan = new StackTindakan();
 
+        // 2. Inisialisasi Ruangan & Dokter
         rumahSakit.insert(1, "Poli Anak");
         rumahSakit.insert(2, "Poli Umum");
         rumahSakit.insert(3, "Poli Gigi");
@@ -16,6 +18,7 @@ public class App {
         rumahSakitDokter.initializeDokter(4, "Dr. Deni", "IGD");
         rumahSakitDokter.initializeDokter(5, "Dr. Elsa", "Poli Gigi");
 
+        // 3. Data Pasien dan Alokasi
         nodePasien p1 = new nodePasien(1, "William Carter", 25, 118, 76, "gigi", false);
         rumahSakitDokter.tambahPasien(p1, antrianGlobal, rumahSakit);
         riwayatTindakan.push(p1);
@@ -83,10 +86,8 @@ public class App {
 
         antrianGlobal.sortQueueById();
 
-        System.out.println("\n===== ANTRIAN PASIEN - RS Universitas Mataram =====");
-        System.out.println("Alamat: Universitas Mataram, NTB\n");
+        System.out.println("\n===== Antrian Semua Pasien (Sudah Diurutkan) =====");
         antrianGlobal.displayQueue();
-
 
         System.out.println("\n===== DAFTAR PASIEN PER RUANGAN =====");
         nodeRuangan current = rumahSakit.root;
@@ -114,6 +115,12 @@ public class App {
             System.out.printf("Ruangan: %s | Total Pasien: %d%n", rekapCurrent.namaRuangan, totalPasienDiRuangan);
             rekapCurrent = rekapCurrent.next;
         }
+        rumahSakit.insert(50, "Ruang Kepala RS (Pusat)"); //root
+        rumahSakit.insert(30, "Ruang IGD");       // < 50, masuk Kiri
+        rumahSakit.insert(70, "Ruang Poliklinik"); // > 50, masuk Kanan
+        rumahSakit.insert(20, "Ruang Parkir");    // < 30, masuk Kiri dari IGD
+        rumahSakit.insert(80, "Ruang Bedah");     // > 70, masuk Kanan dari Poli
+        rumahSakit.displayTree();
 
         riwayatTindakan.displayStack();
         riwayatTindakan.displaySortedLinkedList("nama");
@@ -122,12 +129,13 @@ public class App {
         int idCariStackDitemukan = 8;
         int idCariStackTidakAda = 21;
 
-        System.out.println("\n===== PENCARIAN PASIEN DENGAN LINEAR SEARCH (RIWAYAT/STACK) =====");
+        System.out.println("\n===== 🔎 PENCARIAN PASIEN DENGAN LINEAR SEARCH (RIWAYAT/STACK) =====");
 
         nodePasien hasilStack1 = riwayatTindakan.searchRiwayatById(idCariStackDitemukan);
-        riwayatTindakan.tampilkanHasilPencarianRiwayat(hasilStack1, idCariStackDitemukan); 
+        riwayatTindakan.tampilkanHasilPencarianRiwayat(hasilStack1, idCariStackDitemukan); // Dipanggil dari objek Stack
 
+        // Pasien ID 21 (Tidak Ditemukan)
         nodePasien hasilStack2 = riwayatTindakan.searchRiwayatById(idCariStackTidakAda);
-        riwayatTindakan.tampilkanHasilPencarianRiwayat(hasilStack2, idCariStackTidakAda); 
+        riwayatTindakan.tampilkanHasilPencarianRiwayat(hasilStack2, idCariStackTidakAda); // Dipanggil dari objek Stack
     }
 }
