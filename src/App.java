@@ -83,8 +83,8 @@ public class App {
         rumahSakitDokter.tambahPasien(p21, antrianGlobal, rumahSakit);
         riwayatTindakan.push(p21);
         riwayatTindakan.pop();
-
         antrianGlobal.sortQueueById();
+
 
         System.out.println("\n===== Antrian Semua Pasien (Sudah Diurutkan) =====");
         antrianGlobal.displayQueue();
@@ -125,7 +125,11 @@ public class App {
         riwayatTindakan.displayStack();
         riwayatTindakan.displaySortedLinkedList("nama");
         riwayatTindakan.displaySortedLinkedList("usia");
-
+        antrianGlobal.dequeue(p1);
+        antrianGlobal.dequeue(p2);
+        antrianGlobal.dequeue(p3);
+        System.out.println("\n===== Antrian Setelah Pemeriksaan =====");
+        antrianGlobal.displayQueue();
         int idCariStackDitemukan = 8;
         int idCariStackTidakAda = 21;
 

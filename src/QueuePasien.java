@@ -10,7 +10,26 @@ public class QueuePasien {
       rear = pasien;
     }
   }
+  public nodePasien dequeue(nodePasien pasien) {
+    if (front == null) {
+        System.out.println("Antrian kosong, tidak bisa diperiksa!");
+        return null;
+    }else{
+            System.out.println("\n================ Pemeriksaan ===============");
+            System.out.println("Data dengan nama " + front.name + " telah di periksa");
+            
+        }
+    nodePasien removed = front;  // ambil pasien paling depan
+    front = front.next;          // geser front ke node berikutnya
 
+    // kalau setelah dequeue antrian kosong
+    if (front == null) {
+        rear = null;
+    }
+
+    removed.next = null; // biar node aman tidak menunjuk ke antrian
+    return removed;
+}
   private void swapData(nodePasien a, nodePasien b) {
     int tempId = a.id;
     String tempName = a.name;
